@@ -1,10 +1,29 @@
 Program requirements
 
 Prior to the show a list of all the classeses in the show needs to be agreed and the prize money agreed for the places. 
+It is important to record a description and the criteria for each class.
 Most classes will be awarded for the first three places, the money will vary depending on the class.
 Some classes get prizes down to 6th place.
 On top of the classes there are also special awards these are for the most points in certain categories and the best exhibit in a category.
 A category will consist of a range of classes.
+Awards will result in additional prizes these should be listed against the awards together with certificates.
 
 
-Start of show all exhibitors need to be registered and assigned an exhibitor number
+Start of show all exhibitors need to be registered and assigned an exhibitor number 
+Need to keep a record of the exhibitors full name (need to check for duplicates)
+Optional to record address and phone number
+If someone enters the childrens section then the date of birth needs to be recorded.
+
+
+During the show the all the classes are judged and the results need to be recorded, the results are identified by the exhibitor number.
+The results could be for all the places any two or any one of the places.  Some classes will be awarded upto six places.
+
+The judges will also need to decide some of the awards these are "Best in" categories, again these may vary from year to year,
+it is important that the system flags up what is required during the judging process.
+
+At the end of the judging process the system needs to calculate the overall results, this will include a number of results:
+Most points in show
+Most points in different categories
+List of awards
+Prize money
+List of Prizes
