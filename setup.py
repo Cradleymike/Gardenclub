@@ -12,32 +12,14 @@ class Classes :
         self.sixth_prize = sixth_prize
         self.section = section
 
-    def get_number(self):
-        return self.number
+    def update(self):
+        print(f"Current description is :{self.description}.")
+        new_description = input ("what is the new description?:")
+        self.description = new_description
 
-    def get_description(self):
-        return self.description
-
-    def get_first_prize(self):
-        return self.first_prize
-
-    def get_second_prize(self):
-        return self.second_prize
-
-    def get_third_prize(self):
-        return self.third_prize
-
-    def get_fourth_prize(self):
-        return self.fourth_prize
-
-    def get_fifth_prize(self):
-        return self.fifth_prize
-
-    def get_sixth_prize(self):
-        return self.sixth_prize
-
-    def get_section(self):
-        return self.section
 
 c1 = Classes(1,"large onion",30,20,10,8,5,3,"Vegetable")
-print(c1.get_description())
+
+print(c1.description)
+c1.update()
+print(c1.description)
