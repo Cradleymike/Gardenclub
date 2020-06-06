@@ -1,6 +1,17 @@
 Program requirements
 
 Prior to the show a list of all the classeses in the show needs to be agreed and the prize money agreed for the places. 
+Some classes how vouchers awarded and not prize money.
+
+Strucure for the class
+Number
+description
+list of prize types - voucher or money
+list of voucher values
+list of money values
+Section/category
+
+
 It is important to record a description and the criteria for each class.
 Most classes will be awarded for the first three places, the money will vary depending on the class.
 Some classes get prizes down to 6th place.
