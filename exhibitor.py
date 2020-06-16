@@ -93,7 +93,6 @@ clear_btn = Button(app, text='Clear', width = 12, command = clear_item)
 clear_btn.grid(row = 4, column = 3, pady = 20)
 
 #populate list
-
 populate_list()
 
 
