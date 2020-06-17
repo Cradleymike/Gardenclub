@@ -22,8 +22,23 @@ def add_item():
 def edit_item():
     print('Edit')
 
+def select_item(event):
+    global selected_item
+    index = exhibitor_list.curselection()[0]
+    selected_item = exhibitor_list.get(index)
+
+    number_entry.delete(0,END)
+    number_entry.insert(END, selected_item[0])
+
+    fname_entry.delete(0, END)
+    fname_entry.insert(END, selected_item[1])
+
+    lname_entry.delete(0,END)
+    lname_entry.insert(END,selected_item[2])
+
+
 def remove_item():
-    print('Remove')
+    pass
 
 def clear_item():
     print('Clear')
@@ -89,6 +104,8 @@ scrollbar.grid(row=5, column=3, rowspan = 6)
 exhibitor_list.configure(yscrollcommand = scrollbar.set)
 scrollbar.configure(command = exhibitor_list.yview)
 
+#Bind select item
+exhibitor_list.bind('<<ListboxSelect>>',select_item)
 
 #Buttons - Add, Edit, Remove, Clear
 
