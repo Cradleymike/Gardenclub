@@ -1,11 +1,23 @@
 from tkinter import *
+from tkinter import messagebox
+from exhibtdb import Database
 
+db = Database('exhibitor.db')
 
 def populate_list():
-    print('populate')
+    exhibitor_list.delete(0,END)
+    for row in db.fetch():
+        exhibitor_list.insert(END, row)
 
 def add_item():
-    print('Add')
+    if fname_text.get() == '' or lname_text.get()=='':
+        messagebox.showerror('Required Fields', 'Please include first and last name')
+        return
+
+    db.insert(fname_text.get(),lname_text.get())
+    exhibitor_list.delete(0,END)
+    exhibitor_list.insert(END, (fname_text.get(),lname_text.get()))
+    populate_list()
 
 def edit_item():
     print('Edit')
@@ -61,7 +73,7 @@ phone_entry.grid(row = 2,column=1)
 dob_text = StringVar()
 dob_label = Label(app, text='Date of Birth', font = 'Bold', pady = 5)
 dob_label.grid(row=3, column=0, sticky = W)
-dob_entry = Entry(app, textvariable= lname_text)
+dob_entry = Entry(app, textvariable= dob_text)
 dob_entry.grid(row = 3,column=1)
 
 
@@ -71,7 +83,7 @@ exhibitor_list.grid(row=5, column = 0, columnspan = 3, rowspan = 6, pady=20, pad
 
 #listbox scrollbar
 scrollbar = Scrollbar(app)
-scrollbar.grid(row=5, column=3)
+scrollbar.grid(row=5, column=3, rowspan = 6)
 
 #setscrollbar to listbox
 exhibitor_list.configure(yscrollcommand = scrollbar.set)
@@ -94,6 +106,7 @@ clear_btn.grid(row = 4, column = 3, pady = 20)
 
 #populate list
 populate_list()
+
 
 
 

@@ -8,7 +8,7 @@ class Database:
         self.conn.commit()
 
     def fetch(self):
-        self.cur.execute("SELECT * FROM parts")
+        self.cur.execute("SELECT * FROM exhibitors")
         rows = self.cur.fetchall()
         return rows
 
@@ -28,6 +28,6 @@ class Database:
         self.conn.close()
 
 
-db = Database('exhibitor.db')
-db.insert("Mike", "Hollis")
-db.insert("Jean", "Hollis")
+#db = Database('exhibitor.db')
+#db.insert("Mike", "Hollis")
+#db.insert("Jean", "Hollis")
