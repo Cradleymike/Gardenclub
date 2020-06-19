@@ -41,7 +41,9 @@ def remove_item():
     pass
 
 def clear_item():
-    print('Clear')
+    number_entry.delete(0, END)
+    fname_entry.delete(0,END)
+    lname_entry.delete(0,END)
 
 # Build a management system for the exhibitor details
 
