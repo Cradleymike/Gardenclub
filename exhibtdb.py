@@ -21,7 +21,7 @@ class Database:
         self.conn.commit()
 
     def update(self, num, fname, lname):
-        self.cur.execute("UPDATE exhibitors SET fname = ?, lname = ? WHERE id = ?",(fname,lname,num))
+        self.cur.execute("UPDATE exhibitors SET fname = ?, lname = ? WHERE num = ?",(fname,lname,num))
         self.conn.commit()
 
     def __del__(self):

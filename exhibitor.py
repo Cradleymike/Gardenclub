@@ -17,28 +17,36 @@ def add_item():
     db.insert(fname_text.get(),lname_text.get())
     exhibitor_list.delete(0,END)
     exhibitor_list.insert(END, (fname_text.get(),lname_text.get()))
+    clear_item()
     populate_list()
 
 def edit_item():
-    print('Edit')
+    db.update(selected_item[0],fname_text.get(),lname_text.get())
+    populate_list()
+
 
 def select_item(event):
-    global selected_item
-    index = exhibitor_list.curselection()[0]
-    selected_item = exhibitor_list.get(index)
+    try:
+        global selected_item
+        index = exhibitor_list.curselection()[0]
+        selected_item = exhibitor_list.get(index)
 
-    number_entry.delete(0,END)
-    number_entry.insert(END, selected_item[0])
+        number_entry.delete(0,END)
+        number_entry.insert(END, selected_item[0])
 
-    fname_entry.delete(0, END)
-    fname_entry.insert(END, selected_item[1])
+        fname_entry.delete(0, END)
+        fname_entry.insert(END, selected_item[1])
 
-    lname_entry.delete(0,END)
-    lname_entry.insert(END,selected_item[2])
+        lname_entry.delete(0,END)
+        lname_entry.insert(END,selected_item[2])
+    except IndexError:
+        pass
 
 
 def remove_item():
-    pass
+    db.remove(selected_item[0])
+    clear_item()
+    populate_list()
 
 def clear_item():
     number_entry.delete(0, END)
@@ -100,7 +108,7 @@ exhibitor_list.grid(row=5, column = 0, columnspan = 3, rowspan = 6, pady=20, pad
 
 #listbox scrollbar
 scrollbar = Scrollbar(app)
-scrollbar.grid(row=5, column=3, rowspan = 6)
+scrollbar.grid(row=5, column=3)
 
 #setscrollbar to listbox
 exhibitor_list.configure(yscrollcommand = scrollbar.set)
