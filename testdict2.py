@@ -1,15 +1,31 @@
 import json
 from tkinter import *
+from tkinter import ttk
 
 # Experiment with using Dictionary to store the data and transfer to JSON to output to the file.
 classes = { 1: {"description":"Large Onion", "voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable" },
 2 : {"description":"Longest Runner Bean","voucher":[0,0,0,0,0,0],"money":[1.00,0.75,0.50,0,0,0], "section":"Vegetable"}
 }
 
+def add_item():
+    print(number_text.get())
+    classes = {number_text.get():{"description":description_text.get(),"voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable"}}
+    print(classes)
+    #need to write all the data to the class then output to the file, then re-populate the list
+
+def edit_item():
+    pass
+
+def remove_item():
+    pass
+
+def clear_item():
+    pass
+
 
 app2 = Tk()
 app2.title('Colley Gate Garden Club - Class Setup ')
-app2.geometry('400x700')
+app2.geometry('500x700')
 
 #Title
 title_label = Label(app2, text='Classes Setup', font = 'Bold', pady = 5)
@@ -101,8 +117,32 @@ sixthvoucher_text = StringVar()
 sixthvoucher_entry = Entry(app2, width = 10,textvariable = sixthvoucher_text)
 sixthvoucher_entry.grid(row=10,column = 2)
 
+#section options
+section_label = Label(app2, text='Section', pady = 5)
+section_label.grid(row=11,column =0)
+section_combo = ttk.Combobox(app2,values=['Vegetables','Dahlias','Chrysanthemums','Domestic','Wine'])
+section_combo.grid(row=11,column=1)
 
 
+#points checkbox
+checkpoints = IntVar()
+checkpoint_entry = Checkbutton(app2, text = "Include Points", variable= checkpoints, onvalue=1, offvalue = 0)
+checkpoint_entry.grid(row=13,column=1)
+
+
+#Buttons - Add, Edit, Remove, Clear
+
+add_btn = Button(app2, text='Add', width = 12, command = add_item)
+add_btn.grid(row = 14, column = 0, pady = 20)
+
+edit_btn = Button(app2, text='Edit', width = 12, command = edit_item)
+edit_btn.grid(row = 14, column = 1, pady = 20)
+
+remove_btn = Button(app2, text='Remove', width = 12, command = remove_item)
+remove_btn.grid(row = 14, column = 2, pady = 20)
+
+clear_btn = Button(app2, text='Clear', width = 12, command = clear_item)
+clear_btn.grid(row = 14, column = 3, pady = 20)
 
 
 
