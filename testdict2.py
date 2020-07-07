@@ -5,6 +5,25 @@ from tkinter import ttk
 #Experiment with using Dictionary to store the data and transfer to JSON to output to the file.
 #classes = {"id":1,"description":"Large Onion", "voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable" },{"id":2,"description":"Longest Runner Bean","voucher":[0,0,0,0,0,0],"money":[1.00,0.75,0.50,0,0,0], "section":"Vegetable"}
 
+classes = []
+
+def main ():
+    global classes
+    classes = get_data()
+    for clss in classes:
+        print (clss)
+    app2.mainloop()
+
+
+
+
+def get_data():
+    #open file and read json data
+    with open('classfile.json') as f:
+        classes = json.load(f)
+    return classes
+
+
 
 
 def populate_list():
@@ -15,24 +34,30 @@ def add_item():
     print(number_text.get())
     item = {"Id":int(number_text.get()),
     "description":description_text.get(),
-    "voucher":[int(firstvoucher_text.get()),
-               int(secondvoucher_text.get()),
-               int(thirdvoucher_text.get()),
-               int(fourthvoucher_text.get()),
-               int(fifthvoucher_text.get()),
-               int(sixthvoucher_text.get())],
-    "money":[int(firstmoney_text.get()),
-             int(secondmoney_text.get()),
-             int(thirdmoney_text.get()),
-             int(fourthmoney_text.get()),
-             int(fifthmoney_text.get()),
-             int(sixthmoney_text.get())],
+    "voucher":[float(firstvoucher_text.get()),
+               float(secondvoucher_text.get()),
+               float(thirdvoucher_text.get()),
+               float(fourthvoucher_text.get()),
+               float(fifthvoucher_text.get()),
+               float(sixthvoucher_text.get())],
+    "money":[float(firstmoney_text.get()),
+             float(secondmoney_text.get()),
+             float(thirdmoney_text.get()),
+             float(fourthmoney_text.get()),
+             float(fifthmoney_text.get()),
+             float(sixthmoney_text.get())],
     "section":section_text.get(),
     "points":checkpoints.get()}
     print(item)
     classes.append(item)
     print (classes)
+    save_file()
     #need to write all the data to the class then output to the file, then re-populate the list
+
+def save_file():
+    classesfile = open("classfile.json", "w")
+    json.dump(classes, classesfile)
+    classesfile.close()
 
 def edit_item():
     pass
@@ -41,7 +66,22 @@ def remove_item():
     pass
 
 def clear_item():
-    pass
+    number_entry.delete(0,END)
+    description_entry.delete(0,END)
+    firstmoney_text.set(0.00)
+    secondmoney_text.set(0.00)
+    thirdmoney_text.set(0.00)
+    fourthmoney_text.set(0.00)
+    fifthmoney_text.set(0.00)
+    sixthmoney_text.set(0.00)
+    firstvoucher_text.set(0.0)
+    secondvoucher_text.set(0.0)
+    thirdvoucher_text.set(0.0)
+    fourthvoucher_text.set(0.00)
+    fifthvoucher_text.set(0.00)
+    sixthvoucher_text.set(0.00)
+
+
 
 
 app2 = Tk()
@@ -168,26 +208,11 @@ clear_btn = Button(app2, text='Clear', width = 12, command = clear_item)
 clear_btn.grid(row = 14, column = 3, pady = 20)
 
 
-#open file and read json data
-with open('classfile.json') as f:
-    classes = json.load(f)
-print(classes)
-
-for clss in classes:
-    print (clss)
-    print (clss["id"])
- #print(classes[0])
-#print(classes["voucher"][0])
-#
-
-print(classes)
-
-classesfile = open("classfile.json", "w")
-json.dump(classes, classesfile)
-classesfile.close()
 
 
-app2.mainloop()
+main()
+
+
 
 
 
