@@ -2,15 +2,36 @@ import json
 from tkinter import *
 from tkinter import ttk
 
-# Experiment with using Dictionary to store the data and transfer to JSON to output to the file.
-classes = { 1: {"description":"Large Onion", "voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable" },
-2 : {"description":"Longest Runner Bean","voucher":[0,0,0,0,0,0],"money":[1.00,0.75,0.50,0,0,0], "section":"Vegetable"}
-}
+#Experiment with using Dictionary to store the data and transfer to JSON to output to the file.
+#classes = {"id":1,"description":"Large Onion", "voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable" },{"id":2,"description":"Longest Runner Bean","voucher":[0,0,0,0,0,0],"money":[1.00,0.75,0.50,0,0,0], "section":"Vegetable"}
+
+
+
+def populate_list():
+    """Need to read the JSON file and populate the classes dictionary which can then be used in the list?"""
+    pass
 
 def add_item():
     print(number_text.get())
-    classes = {number_text.get():{"description":description_text.get(),"voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable"}}
-    print(classes)
+    item = {"Id":int(number_text.get()),
+    "description":description_text.get(),
+    "voucher":[int(firstvoucher_text.get()),
+               int(secondvoucher_text.get()),
+               int(thirdvoucher_text.get()),
+               int(fourthvoucher_text.get()),
+               int(fifthvoucher_text.get()),
+               int(sixthvoucher_text.get())],
+    "money":[int(firstmoney_text.get()),
+             int(secondmoney_text.get()),
+             int(thirdmoney_text.get()),
+             int(fourthmoney_text.get()),
+             int(fifthmoney_text.get()),
+             int(sixthmoney_text.get())],
+    "section":section_text.get(),
+    "points":checkpoints.get()}
+    print(item)
+    classes.append(item)
+    print (classes)
     #need to write all the data to the class then output to the file, then re-populate the list
 
 def edit_item():
@@ -60,67 +81,69 @@ Voucher_label.grid(row=4, column=2)
 #first_label
 first_label = Label(app2, text='First', pady = 5)
 first_label.grid(row=5, column=0)
-firstmoney_text = StringVar()
+firstmoney_text = StringVar(value="0")
 firstmoney_entry = Entry(app2, width = 10,textvariable = firstmoney_text)
 firstmoney_entry.grid(row=5,column=1)
-firstvoucher_text = StringVar()
+firstvoucher_text = StringVar(value="0")
 firstvoucher_entry = Entry(app2, width = 10,textvariable = firstvoucher_text)
 firstvoucher_entry.grid(row=5,column = 2)
 
 #Second_label
 second_label = Label(app2, text='Second', pady = 5)
 second_label.grid(row=6, column=0)
-secondmoney_text = StringVar()
+secondmoney_text = StringVar(value="0")
 secondmoney_entry = Entry(app2, width = 10,textvariable = secondmoney_text)
 secondmoney_entry.grid(row=6,column=1)
-secondvoucher_text = StringVar()
+secondvoucher_text = StringVar(value="0")
 secondvoucher_entry = Entry(app2, width = 10,textvariable = secondvoucher_text)
 secondvoucher_entry.grid(row=6,column = 2)
 
 #Third_label
 third_label = Label(app2, text='Third', pady = 5)
 third_label.grid(row=7, column=0)
-thirdmoney_text = StringVar()
+thirdmoney_text = StringVar(value="0")
 thirdmoney_entry = Entry(app2, width = 10,textvariable = thirdmoney_text)
 thirdmoney_entry.grid(row=7,column=1)
-thirdvoucher_text = StringVar()
+thirdvoucher_text = StringVar(value="0")
 thirdvoucher_entry = Entry(app2, width = 10,textvariable = thirdvoucher_text)
 thirdvoucher_entry.grid(row=7,column = 2)
 
 #Fourth_label
 fourth_label = Label(app2, text='Fourth', pady = 5)
 fourth_label.grid(row=8, column=0)
-fourthmoney_text = StringVar()
+fourthmoney_text = StringVar(value="0")
 fourthmoney_entry = Entry(app2, width = 10,textvariable = fourthmoney_text)
 fourthmoney_entry.grid(row=8,column=1)
-fourthvoucher_text = StringVar()
+fourthvoucher_text = StringVar(value="0")
 fourthvoucher_entry = Entry(app2, width = 10,textvariable = fourthvoucher_text)
 fourthvoucher_entry.grid(row=8,column = 2)
 
 #Fifth_label
 fifth_label = Label(app2, text='Fifth', pady = 5)
 fifth_label.grid(row=9, column=0)
-fifthmoney_text = StringVar()
+fifthmoney_text = StringVar(value="0")
 fifthmoney_entry = Entry(app2, width = 10,textvariable = fifthmoney_text)
 fifthmoney_entry.grid(row=9,column=1)
-fifthvoucher_text = StringVar()
+fifthvoucher_text = StringVar(value="0")
 fifthvoucher_entry = Entry(app2, width = 10,textvariable = fifthvoucher_text)
 fifthvoucher_entry.grid(row=9,column = 2)
 
 #Sixth_label
 sixth_label = Label(app2, text='Sixth', pady = 5)
 sixth_label.grid(row=10, column=0)
-sixthmoney_text = StringVar()
+sixthmoney_text = StringVar(value="0")
 sixthmoney_entry = Entry(app2, width = 10,textvariable = sixthmoney_text)
 sixthmoney_entry.grid(row=10,column=1)
-sixthvoucher_text = StringVar()
+sixthvoucher_text = StringVar(value="0")
 sixthvoucher_entry = Entry(app2, width = 10,textvariable = sixthvoucher_text)
 sixthvoucher_entry.grid(row=10,column = 2)
 
 #section options
+
+section_text = StringVar()
 section_label = Label(app2, text='Section', pady = 5)
 section_label.grid(row=11,column =0)
-section_combo = ttk.Combobox(app2,values=['Vegetables','Dahlias','Chrysanthemums','Domestic','Wine'])
+section_combo = ttk.Combobox(app2,values=['Vegetables','Dahlias','Chrysanthemums','Domestic','Wine'],textvariable = section_text)
 section_combo.grid(row=11,column=1)
 
 
@@ -145,17 +168,21 @@ clear_btn = Button(app2, text='Clear', width = 12, command = clear_item)
 clear_btn.grid(row = 14, column = 3, pady = 20)
 
 
+#open file and read json data
+with open('classfile.json') as f:
+    classes = json.load(f)
+print(classes)
+
+for clss in classes:
+    print (clss)
+    print (clss["id"])
+ #print(classes[0])
+#print(classes["voucher"][0])
+#
 
 print(classes)
 
-
-print(classes[1]["description"])
-print(classes[1]["voucher"][0])
-
-
-print(classes)
-
-classesfile = open("classfile.txt", "w")
+classesfile = open("classfile.json", "w")
 json.dump(classes, classesfile)
 classesfile.close()
 
