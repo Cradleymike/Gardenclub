@@ -46,6 +46,21 @@ def third_details():
     global third_item
     third_text.set(selected_item[0])
 
+def fourth_details():
+    global fourth_text
+    global fourth_item
+    fourth_text.set(selected_item[0])
+
+def fifth_details():
+    global fifth_text
+    global fifth_item
+    fifth_text.set(selected_item[0])
+
+def sixth_details():
+    global sixth_text
+    global sixth_item
+    sixth_text.set(selected_item[0])
+
 def select_item(event):
     try:
         global selected_item
@@ -90,14 +105,35 @@ third_label.grid(row=4, column=0, sticky = W)
 third_entry = Entry(app3, width = 10, textvariable= third_text)
 third_entry.grid(row = 4,column=1, sticky = W)
 
+#Fourth
+fourth_text = StringVar()
+fourth_label = Label(app3, text='Fourth',  pady = 5)
+fourth_label.grid(row=5, column=0, sticky = W)
+fourth_entry = Entry(app3, width = 10, textvariable= fourth_text)
+fourth_entry.grid(row = 5,column=1, sticky = W)
+
+#Fifth
+fifth_text = StringVar()
+fifth_label = Label(app3, text='Fifth',  pady = 5)
+fifth_label.grid(row=6, column=0, sticky = W)
+fifth_entry = Entry(app3, width = 10, textvariable= fifth_text)
+fifth_entry.grid(row = 6,column=1, sticky = W)
+
+#Sixth
+sixth_text = StringVar()
+sixth_label = Label(app3, text='Fifth',  pady = 5)
+sixth_label.grid(row=7, column=0, sticky = W)
+sixth_entry = Entry(app3, width = 10, textvariable= sixth_text)
+sixth_entry.grid(row = 7,column=1, sticky = W)
+
 
 #Listbox for the existing Exhibitors
 exhibitor_list = Listbox(app3, height=5, width = 50, border =0)
-exhibitor_list.grid(row=5, column = 0, columnspan = 3, rowspan = 6, pady=20, padx = 20)
+exhibitor_list.grid(row=10, column = 0, columnspan = 3, rowspan = 6, pady=20, padx = 20)
 
 #listbox scrollbar
 scrollbar = Scrollbar(app3)
-scrollbar.grid(row=5, column=3)
+scrollbar.grid(row=10, column=3, rowspan = 6)
 
 #setscrollbar to listbox
 exhibitor_list.configure(yscrollcommand = scrollbar.set)
@@ -109,16 +145,25 @@ exhibitor_list.bind('<<ListboxSelect>>',select_item)
 
 #Buttons
 first_btn = Button(app3, text='First', width = 12, command = first_details)
-first_btn.grid(row = 13, column = 0, pady = 20)
+first_btn.grid(row = 2, column = 2)
 
 second_btn = Button(app3, text='Second', width = 12, command = second_details)
-second_btn.grid(row = 13, column = 1)
+second_btn.grid(row = 3, column = 2)
 
 third_btn = Button(app3, text='Third', width = 12, command = third_details)
-third_btn.grid(row = 13, column = 2)
+third_btn.grid(row = 4, column = 2)
+
+fourth_btn = Button(app3, text='Fourth', width = 12, command = fourth_details)
+fourth_btn.grid(row = 5, column = 2)
+
+fifth_btn = Button(app3, text='Fifth', width = 12, command = fifth_details)
+fifth_btn.grid(row = 6, column = 2)
+
+sixth_btn = Button(app3, text='Sixth', width = 12, command = sixth_details)
+sixth_btn.grid(row = 7, column = 2)
 
 add_btn = Button(app3, text='Add', width = 12, command = add_details)
-add_btn.grid(row = 14, column = 0, pady = 20)
+add_btn.grid(row = 18, column = 0, pady = 20)
 
 
 main()
