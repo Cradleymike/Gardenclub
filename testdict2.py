@@ -2,8 +2,6 @@ import json
 from tkinter import *
 from tkinter import ttk
 
-#Experiment with using Dictionary to store the data and transfer to JSON to output to the file.
-#classes = {"id":1,"description":"Large Onion", "voucher":[30,20,10,0,0,0],"money":[0,0,0,8,5,3],"section":"Vegetable" },{"id":2,"description":"Longest Runner Bean","voucher":[0,0,0,0,0,0],"money":[1.00,0.75,0.50,0,0,0], "section":"Vegetable"}
 
 classes = []
 
